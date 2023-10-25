@@ -1,2 +1,3 @@
 module myADTsAndXML {
+	requires junit;
 }
