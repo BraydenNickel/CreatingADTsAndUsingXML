@@ -3,7 +3,8 @@
  */
 package com.project.classes;
 
-import com.project.interfaces.Iterator;
+import java.util.Iterator;
+
 import com.project.interfaces.ListADT;
 
 /**
