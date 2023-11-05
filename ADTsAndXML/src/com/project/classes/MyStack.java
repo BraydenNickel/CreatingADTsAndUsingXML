@@ -3,42 +3,50 @@
  */
 package com.project.classes;
 
+import java.util.EmptyStackException;
+import java.util.LinkedList;
 import com.project.interfaces.StackADT;
 
 /**
  * @author Ruthless
+ * @param <E>
  *
  */
-public class MyStack implements StackADT {
+public class MyStack<E> implements StackADT<E> {
+    private LinkedList<E> stack;
 
-	@Override
-	public void push(Object item) {
-		// TODO Auto-generated method stub
-		
-	}
+    public MyStack() {
+        stack = new LinkedList<>();
+    }
 
-	@Override
-	public Object pop() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+    @Override
+    public void push(E item) {
+        stack.push(item);
+    }
 
-	@Override
-	public Object peek() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+    @Override
+    public E pop() {
+        if (isEmpty()) {
+            throw new EmptyStackException();
+        }
+        return stack.pop();
+    }
 
-	@Override
-	public boolean isEmpty() {
-		// TODO Auto-generated method stub
-		return false;
-	}
+    @Override
+    public E peek() {
+        if (isEmpty()) {
+            throw new EmptyStackException();
+        }
+        return stack.peek();
+    }
 
-	@Override
-	public int size() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
+    @Override
+    public boolean isEmpty() {
+        return stack.isEmpty();
+    }
 
+    @Override
+    public int size() {
+        return stack.size();
+    }
 }

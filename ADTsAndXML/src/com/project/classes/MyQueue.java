@@ -3,42 +3,50 @@
  */
 package com.project.classes;
 
+import java.util.EmptyStackException;
+import java.util.LinkedList;
+
 import com.project.interfaces.QueueADT;
 
 /**
  * @author Ruthless
  *
  */
-public class MyQueue implements QueueADT {
+public class MyQueue<E> implements QueueADT<E> {
+    private LinkedList<E> queue;
 
-	@Override
-	public void enqueue(Object item) {
-		// TODO Auto-generated method stub
-		
-	}
+    public MyQueue() {
+        queue = new LinkedList<>();
+    }
 
-	@Override
-	public Object dequeue() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+    @Override
+    public void enqueue(E item) {
+        queue.addLast(item);
+    }
 
-	@Override
-	public Object peek() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+    @Override
+    public E dequeue() {
+        if (isEmpty()) {
+            throw new EmptyStackException();
+        }
+        return queue.removeFirst();
+    }
 
-	@Override
-	public boolean isEmpty() {
-		// TODO Auto-generated method stub
-		return false;
-	}
+    @Override
+    public E peek() {
+        if (isEmpty()) {
+            throw new EmptyStackException();
+        }
+        return queue.getFirst();
+    }
 
-	@Override
-	public int size() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
+    @Override
+    public boolean isEmpty() {
+        return queue.isEmpty();
+    }
 
+    @Override
+    public int size() {
+        return queue.size();
+    }
 }
