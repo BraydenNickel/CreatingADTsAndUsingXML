@@ -13,15 +13,15 @@ import com.project.interfaces.StackADT;
  *
  */
 public class MyStack<E> implements StackADT<E> {
-    private LinkedList<E> stack;
+    private MyArrayList<E> stack;
 
     public MyStack() {
-        stack = new LinkedList<>();
+        stack = new MyArrayList<>();
     }
 
     @Override
     public void push(E item) {
-        stack.push(item);
+        stack.add(item);
     }
 
     @Override
@@ -29,7 +29,7 @@ public class MyStack<E> implements StackADT<E> {
         if (isEmpty()) {
             throw new EmptyStackException();
         }
-        return stack.pop();
+        return (E) stack.remove(stack.size() - 1);
     }
 
     @Override
@@ -37,7 +37,7 @@ public class MyStack<E> implements StackADT<E> {
         if (isEmpty()) {
             throw new EmptyStackException();
         }
-        return stack.peek();
+        return (E) stack.get(stack.size() - 1);
     }
 
     @Override

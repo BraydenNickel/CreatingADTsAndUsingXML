@@ -4,8 +4,6 @@
 package com.project.classes;
 
 import java.util.EmptyStackException;
-import java.util.LinkedList;
-
 import com.project.interfaces.QueueADT;
 
 /**
@@ -13,15 +11,15 @@ import com.project.interfaces.QueueADT;
  *
  */
 public class MyQueue<E> implements QueueADT<E> {
-    private LinkedList<E> queue;
+    private MyArrayList<E> queue;
 
     public MyQueue() {
-        queue = new LinkedList<>();
+        queue = new MyArrayList<>();
     }
 
     @Override
     public void enqueue(E item) {
-        queue.addLast(item);
+        queue.add(item);
     }
 
     @Override
@@ -29,7 +27,7 @@ public class MyQueue<E> implements QueueADT<E> {
         if (isEmpty()) {
             throw new EmptyStackException();
         }
-        return queue.removeFirst();
+        return queue.remove(0);
     }
 
     @Override
@@ -37,7 +35,7 @@ public class MyQueue<E> implements QueueADT<E> {
         if (isEmpty()) {
             throw new EmptyStackException();
         }
-        return queue.getFirst();
+        return queue.get(0);
     }
 
     @Override
