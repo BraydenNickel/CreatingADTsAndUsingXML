@@ -32,8 +32,15 @@ public class MyDLL<E> implements ListADT<E> {
         }
     }
     private Node<E> getNode(int index) {
+        if (index < 0 || index >= size) {
+            throw new IndexOutOfBoundsException("Invalid index");
+        }
+
         Node<E> current = head;
         for (int i = 0; i < index; i++) {
+            if (current == null) {
+                throw new IllegalStateException("Node is unexpectedly null");
+            }
             current = current.next;
         }
         return current;
@@ -60,17 +67,29 @@ public class MyDLL<E> implements ListADT<E> {
         Node<E> newNode = new Node<>(toAdd);
 
         if (index == 0) {
+            // Adding at the beginning
             newNode.next = head;
             if (head != null) {
                 head.prev = newNode;
             }
             head = newNode;
+
+            if (tail == null) {
+                // If the list was empty, update the tail
+                tail = newNode;
+            }
         } else if (index == size) {
+            // Adding at the end
             newNode.prev = tail;
             if (tail != null) {
                 tail.next = newNode;
             }
             tail = newNode;
+
+            if (head == null) {
+                // If the list was empty, update the head
+                head = newNode;
+            }
         } else {
             Node<E> current = getNode(index);
             newNode.prev = current.prev;
@@ -158,6 +177,8 @@ public class MyDLL<E> implements ListADT<E> {
 
 	            if (current.next != null) {
 	                current.next.prev = current.prev;
+	            } else {
+	            	tail = current.prev;
 	            }
 
 	            size--;

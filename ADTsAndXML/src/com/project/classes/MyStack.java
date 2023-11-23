@@ -4,7 +4,6 @@
 package com.project.classes;
 
 import java.util.EmptyStackException;
-import java.util.LinkedList;
 import com.project.interfaces.StackADT;
 
 /**

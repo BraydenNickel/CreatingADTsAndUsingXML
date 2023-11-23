@@ -52,5 +52,70 @@ public class MyArrayListTests<E> {
         assertEquals(Integer.valueOf(1), myArrayList.get(0));
         assertEquals(Integer.valueOf(3), myArrayList.get(1));
     }
+    
+    @Test
+    public void testRemoveByObject() {
+        // Add elements to the list
+        myArrayList.add(1);
+        myArrayList.add(2);
+        myArrayList.add(3);
+
+        // Remove an element by object
+        Integer elementToRemove = 2;
+        Integer removedElement = (Integer) myArrayList.remove(elementToRemove);
+
+        // Check the result
+        assertEquals(2, myArrayList.size());
+        assertEquals(Integer.valueOf(1), myArrayList.get(0));
+        assertEquals(Integer.valueOf(3), myArrayList.get(1));
+        assertEquals(Integer.valueOf(2), removedElement);
+    }
+
+    @Test
+    public void testRemoveNonExistentObject() {
+        // Attempt to remove a non-existent element
+        Integer nonExistentElement = 4;
+        assertNull(myArrayList.remove(nonExistentElement));
+    }
+
+
+    @Test
+    public void testSet() {
+        myArrayList.add(1);
+        myArrayList.add(2);
+
+        assertEquals(Integer.valueOf(2), myArrayList.set(1, 3));
+        assertEquals(2, myArrayList.size());
+        assertEquals(Integer.valueOf(1), myArrayList.get(0));
+        assertEquals(Integer.valueOf(3), myArrayList.get(1));
+    }
+
+    @Test
+    public void testContains() {
+        myArrayList.add(1);
+        myArrayList.add(2);
+
+        assertTrue(myArrayList.contains(1));
+        assertFalse(myArrayList.contains(3));
+    }
+
+    @Test
+    public void testToArray() {
+        myArrayList.add(1);
+        myArrayList.add(2);
+
+        Integer[] array = new Integer[2];
+        myArrayList.toArray(array);
+
+        assertArrayEquals(new Integer[]{1, 2}, array);
+    }
+
+    @Test
+    public void testIsEmpty() {
+        assertTrue(myArrayList.isEmpty());
+
+        myArrayList.add(1);
+        assertFalse(myArrayList.isEmpty());
+    }
 
 }
