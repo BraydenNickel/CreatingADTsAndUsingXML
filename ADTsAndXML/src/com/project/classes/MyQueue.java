@@ -12,10 +12,10 @@ import com.project.interfaces.QueueADT;
  *
  */
 public class MyQueue<E> implements QueueADT<E> {
-    private MyArrayList<E> queue;
+    private MyDLL<E> queue;
 
     public MyQueue() {
-        queue = new MyArrayList<>();
+        queue = new MyDLL<>();
     }
 
     @Override

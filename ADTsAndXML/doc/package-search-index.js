@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"m":"myADTsAndXML","l":"com.project.classes"},{"m":"myADTsAndXML","l":"com.project.interfaces"},{"m":"myADTsAndXML","l":"parser"}];updateSearchResults();
